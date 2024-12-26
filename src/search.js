@@ -1,5 +1,5 @@
-import {continents} from "/src/dicts.js"
-import {OnMain} from "/src/utilities.js"
+import {continents} from "src/dicts.js"
+import {OnMain} from "src/utilities.js"
 
 let searchBar = document.querySelector(".search-bar")
 let searchButton = document.querySelector(".search-button")
@@ -111,12 +111,12 @@ window.addEventListener("click", e => {
 // the BIG UPADATE function that regroupes all changes
 export async function bigUpdate(value) {
 	if (OnMain()) {
-		let [{UpdateMidle}, {UpdateLower}, {updateUnit}] = await Promise.all([import("/src/dashboard/midle.js"), import("/src/dashboard/lower.js"), import("/src/settings.js")])
+		let [{UpdateMidle}, {UpdateLower}, {updateUnit}] = await Promise.all([import("src/dashboard/midle.js"), import("src/dashboard/lower.js"), import("src/settings.js")])
 		await UpdateMidle(value)
 		await UpdateLower(value)
 		updateUnit()
 	} else {
-		let {DisplayCharts} = await import("/src/statistics/Charts.js")
+		let {DisplayCharts} = await import("src/statistics/Charts.js")
 		await DisplayCharts(value)
 	}
 }

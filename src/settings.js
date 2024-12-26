@@ -1,4 +1,4 @@
-import {toC, toF, OnMain, OnStats} from "/src/utilities.js"
+import {toC, toF, OnMain, OnStats} from "src/utilities.js"
 
 let toolButton = document.querySelector(".toolsIcon")
 let tools = document.querySelector(".tools")
@@ -30,7 +30,7 @@ settings resee
 let forecastOption = document.querySelector(".forecast-type")
 if (forecastOption) {
 	forecastOption.children[0].addEventListener("click", async _ => {
-		let {UpdateMidle} = await import("/src/dashboard/midle.js")
+		let {UpdateMidle} = await import("src/dashboard/midle.js")
 		if (forecastOption.classList.contains("days")) {
 			forecastOption.classList.replace("days", "hours")
 			UpdateMidle()
@@ -59,7 +59,7 @@ if (windOption) {
 	})
 }
 async function upWind() {
-	let [{UpdateMidle}, {updateCitiesWeather}] = await Promise.all([import("/src/dashboard/midle.js"), import("/src/dashboard/lower.js")])
+	let [{UpdateMidle}, {updateCitiesWeather}] = await Promise.all([import("src/dashboard/midle.js"), import("src/dashboard/lower.js")])
 	UpdateMidle()
 	updateCitiesWeather()
 	updateUnit()
@@ -78,7 +78,7 @@ tempOption.children[0].addEventListener("click", _ => {
 })
 async function changeUnitTemp(unit) {
 	if (OnStats()) {
-		let {updateTempUnit} = await import("/src/statistics/Charts.js")
+		let {updateTempUnit} = await import("src/statistics/Charts.js")
 		updateTempUnit()
 	}
 	let temps = [...document.querySelectorAll(".midle .left-part .main.week .day .temp"), document.querySelector(".midle .left-part .main.week .day.active .bottom .info p span"), ...document.querySelectorAll(".lower .right .cities .box .info .temp"), ...document.querySelectorAll(".left-part .main .left .temperature"), ...document.querySelectorAll(".left-part .main .more .details .sec > div .value.temp")]
@@ -109,7 +109,7 @@ export function updateUnit() {
 let veiwMode = document.querySelector(".view-mode")
 if (veiwMode) {
 	veiwMode.children[0].addEventListener("click", async _ => {
-		let {DisplayCharts} = await import("/src/statistics/Charts.js")
+		let {DisplayCharts} = await import("src/statistics/Charts.js")
 		if (veiwMode.classList.contains("active")) {
 			veiwMode.classList.remove("active")
 			DisplayCharts()
@@ -125,7 +125,7 @@ if (window.matchMedia("(max-width: 850px)").matches && veiwMode) {
 // mode
 let theme = document.querySelector(".theme")
 theme.children[0].addEventListener("click", async _ => {
-	let {dark, light} = await import("/src/modes.js")
+	let {dark, light} = await import("src/modes.js")
 	if (theme.classList.contains("light")) {
 		dark()
 	} else {
