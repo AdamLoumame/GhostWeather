@@ -2514,4 +2514,5 @@ header .right-part .ghost {
 	margin-top: 1.2rem;
 	display: flex;
 	justify-content: center;
+	display: none;
 }
