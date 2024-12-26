@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="src/style.css" />
+		<link rel="stylesheet" href="src/normalize.css" />
+		<!-- font -->
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+
+		<!-- CDN -->
+		<script defer src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+		<!-- icons -->
+		<link rel="icon" href="/images/weather/simboles/ghost.png" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<title>GhostWeather Stats</title>
+	</head>
+	<body>
+		<!-- header -->
+		<header class="stats-heading">
+			<div class="icons">
+				<a href="#" class="toolsIcon"><i class="material-icons">more_vert</i></a>
+				<div class="location">
+					<i class="material-icons">location_on</i>
+					<span class="loc-name"><span>Loading...</span></span>
+				</div>
+			</div>
+			<div class="search">
+				<i class="material-icons search-button">radio_button_unchecked</i>
+				<input type="text" placeholder="Search City..." class="search-bar" />
+				<div class="separator"></div>
+				<ul class="suggestions"></ul>
+			</div>
+			<div class="mode dark">
+				<i class="light material-icons" style="margin-left: -4px">wb_sunny</i>
+				<i class="dark material-icons active" style="margin-right: -4px">bedtime</i>
+			</div>
+		</header>
+		<!-- error-404 -->
+		<div class="error-404">
+			<div class="container">
+				<img src="./images/weather/simboles/sun.png" alt="" class="sun" />
+				<div class="fours">
+					<span>4</span>
+					<span>0</span>
+					<span>4</span>
+				</div>
+				<p class="message">
+					<span>Oops</span><span>...</span> <span>sorry</span> <span>page</span> <span>not</span>
+					<span>found</span>
+				</p>
+			</div>
+		</div>
+		<!-- loader -->
+		<div class="loader">
+			<div class="container">
+				<span class="droplet"></span>
+				<span class="droplet"></span>
+				<span class="droplet"></span>
+			</div>
+		</div>
+		<!-- main chart -->
+		<div class="main-chart">
+			<div class="top">
+				<div class="weather-type-options temp">
+					<span class="temp active">Temperature</span>
+					<span class="wind">Wind</span>
+					<span class="precip">Precipitations</span>
+				</div>
+				<div class="forecast-options days">
+					<span class="days active">Days</span>
+					<span class="hours">hours</span>
+				</div>
+			</div>
+			<div class="container">
+				<div class="empty-chart-label"></div>
+				<div class="info-labels"></div>
+				<div id="chart"></div>
+			</div>
+		</div>
+		<!-- bottom -->
+		<div class="stats-bottom">
+			<!-- uv forecasting -->
+			<div class="bar-chart">
+				<h4>UV Index Outlook</h4>
+				<div class="container">
+					<div class="empty-uv-chart-label"></div>
+					<div class="labels"></div>
+					<div id="uv-chart"></div>
+				</div>
+			</div>
+			<!-- atmospheric overview  -->
+			<div class="atmospheric-overview">
+				<h4>Atmospheric Overview</h4>
+				<div class="box">
+					<div class="clouds">
+						<span class="name">Clouds</span>
+						<div class="clouds-error"></div>
+						<div id="cloudsChart"></div>
+					</div>
+					<div class="humidity">
+						<div class="labels"></div>
+						<span class="name">Humidity</span>
+						<div id="humChart"></div>
+					</div>
+				</div>
+			</div>
+			<!-- daylight-cycle -->
+			<div class="day-timeline sun">
+				<h4 class="moonname">Moonrise & Moonset</h4>
+				<h4 class="sunname">Sunrize & Sunset</h4>
+				<h4 class="error-title">Day Timeline</h4>
+				<div class="box">
+					<div class="timeline-error"><span>The Sun or Moon has already set, or no data is available</span></div>
+					<div class="graph">
+						<div class="circle"></div>
+						<div class="hider"><div class="cover-arc"></div></div>
+						<img src="/images/weather/simboles/sun-icon.png" alt="" class="sun" />
+						<img src="/images/weather/simboles/moon-icon.png" alt="" class="moon" />
+					</div>
+					<div class="info">
+						<div class="description rise">
+							<img src="/images/weather/simboles/dark-sunrise.png" alt="" class="sunstate" />
+							<img src="/images/weather/simboles/dark-moonrise.png" alt="" class="moonstate" />
+							<span class="name sun-state-name">Sunrise</span>
+							<span class="name moon-state-name">Moonrise</span>
+							<div class="time"></div>
+						</div>
+						<div class="description set">
+							<img src="/images/weather/simboles/dark-sunset.png" alt="" class="sunstate" />
+							<img src="/images/weather/simboles/dark-moonset.png" alt="" class="moonstate" />
+							<span class="name sun-state-name">Sunset</span>
+							<span class="name moon-state-name">Moonset</span>
+							<div class="time"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- tools -->
+		<div class="tools">
+			<div class="container">
+				<div class="nav">
+					<a class="menu" href="index.html">
+						<span>Dashboard</span>
+						<i class="material-icons">home</i>
+					</a>
+					<a class="menu active">
+						<span>Statistics</span>
+						<i class="material-icons">bar_chart</i>
+					</a>
+				</div>
+				<div class="settings">
+					<div class="title">
+						<h1>Options</h1>
+						<i class="material-icons">settings</i>
+					</div>
+					<div class="view-mode">
+						<span>View Mode</span>
+						<img src="/images/weather/simboles/view-mode.png" class="view-modeChoice" />
+					</div>
+					<div class="temp-unit C">
+						<span>Temperature Unit</span>
+						<div class="choices">
+							<span class="unit">F</span>
+							<span class="unit">C</span>
+						</div>
+					</div>
+					<div class="theme">
+						<span>Theme</span>
+						<div class="choices">
+							<i class="light material-icons" style="margin-left: -2px">wb_sunny</i>
+							<i class="dark material-icons active" style="margin-right: -3px">bedtime</i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- CopyRight -->
+		<p class="CopyRight">&copy; 2024 Adam Loumame. All rights reserved.</p>
+		<!-- modul es -->
+		<script type="module" src="src/statistics/Charts.js"></script>
+		<script type="module" src="src/search.js"></script>
+		<script type="module" src="src/modes.js"></script>
+		<script type="module" src="src/settings.js"></script>
+	</body>
+</html>

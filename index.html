@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="src/style.css" />
+		<link rel="stylesheet" href="src/normalize.css" />
+		<!-- font -->
+		<link href="https://fonts.googleapis.com/css2?family=Mulish:ital,wght@0,200..1000;1,200..1000&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet" />
+
+		<!-- CNDS -->
+		<script defer src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1"></script>
+		<script defer src="https://cdn.jsdelivr.net/npm/ol@v10.2.1/dist/ol.js"></script>
+		<script defer src="https://unpkg.com/@dotlottie/player-component@2.7.12/dist/dotlottie-player.mjs" type="module"></script>
+
+		<!-- map -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v10.2.1/ol.css" />
+
+		<!-- icons -->
+		<link rel="icon" href="/images/weather/simboles/ghost.png" />
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+		<title>GhostWeather Main</title>
+	</head>
+	<body>
+		<!-- header -->
+		<header>
+			<div class="left-part">
+				<div class="icons">
+					<a href="#" class="toolsIcon"><i class="material-icons">more_vert</i></a>
+					<div class="location">
+						<i class="material-icons">location_on</i>
+						<span class="loc-name"><span>Loading...</span></span>
+					</div>
+				</div>
+				<div class="search">
+					<i class="material-icons search-button">radio_button_unchecked</i>
+					<input type="text" placeholder="Search City..." class="search-bar" />
+					<div class="separator"></div>
+					<ul class="suggestions"></ul>
+				</div>
+			</div>
+			<div class="right-part">
+				<div class="mode dark">
+					<i class="light material-icons" style="margin-left: -2px">wb_sunny</i>
+					<i class="dark material-icons active" style="margin-right: -3px">bedtime</i>
+				</div>
+				<img src="images/weather/simboles/ghost.png" alt="" class="ghost" />
+			</div>
+		</header>
+		<!-- error-404 -->
+		<div class="error-404">
+			<div class="container">
+				<img src="./images/weather/simboles/sun.png" alt="" class="sun" />
+				<div class="fours">
+					<span>4</span>
+					<span>0</span>
+					<span>4</span>
+				</div>
+				<p class="message"><span>Oops</span><span>...</span> <span>sorry</span> <span>page</span> <span>not</span> <span>found</span></p>
+			</div>
+		</div>
+		<!-- loader -->
+		<div class="loader">
+			<div class="container">
+				<span class="droplet"></span>
+				<span class="droplet"></span>
+				<span class="droplet"></span>
+			</div>
+		</div>
+		<!-- midle part -->
+		<div class="midle">
+			<div class="left-part">
+				<div class="info">
+					<div class="dates">
+						<span class="date today">Today</span>
+						<span class="date tomorrow">Tomorrow</span>
+						<span class="date week active">Next 7 days</span>
+					</div>
+					<div class="options forecast">
+						<span class="option left active"><span class="text">Forecast</span><span class="material-icons icon">clouds</span></span>
+						<span class="option right"><span class="text">Air quality</span><span class="material-icons icon">water</span></span>
+					</div>
+				</div>
+				<div class="main today dark"></div>
+				<div class="main tomorrow"></div>
+				<!-- week -->
+				<div class="main week active"></div>
+				<!-- air quality -->
+				<div class="main-air">
+					<div class="aqi">
+						<div class="aqi-index">
+							<div class="image">
+								<img src="" alt="" class="aqi-image" />
+							</div>
+							<div class="infos">
+								<span class="number"></span>
+								<span class="description"></span>
+							</div>
+							<span class="text">AQI</span>
+						</div>
+						<div class="UV-forecast">
+							<div class="box">
+								<div class="bar"><span class="progress"></span></div>
+								<span class="text"><span class="value"></span><span></span></span>
+							</div>
+							<div class="box">
+								<div class="bar"><span class="progress"></span></div>
+								<span class="text"><span class="value"></span><span></span></span>
+							</div>
+							<div class="box">
+								<div class="bar"><span class="progress"></span></div>
+								<span class="text"><span class="value"></span><span></span></span>
+							</div>
+							<div class="title">UV idnex Forecast</div>
+						</div>
+					</div>
+					<div class="infos">
+						<div class="col">
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info PM2_5"></canvas>
+								</div>
+								<span>PM2.5 µg/m³</span>
+							</div>
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info PM10"></canvas>
+								</div>
+								<span>PM10 µg/m³</span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info CO"></canvas>
+								</div>
+								<span>CO µg/m³</span>
+							</div>
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info O3"></canvas>
+								</div>
+								<span>O₃ µg/m³</span>
+							</div>
+						</div>
+						<div class="col">
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info NO2"></canvas>
+								</div>
+								<span>NO₂ µg/m³</span>
+							</div>
+							<div class="box">
+								<div class="number"></div>
+								<div class="info-container">
+									<canvas class="info SO2"></canvas>
+								</div>
+								<span>SO₂ µg/m³</span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="right-part">
+				<h4 class="title">Chance Of Precipitation</h4>
+				<div class="Chance-of-rain">
+					<div class="Yaxis">
+						<div class="axe">
+							<span>Heavy</span>
+							<div class="line"></div>
+						</div>
+						<div class="axe">
+							<span>Rainy</span>
+							<div class="line"></div>
+						</div>
+						<div class="axe">
+							<span>Light</span>
+							<div class="line"></div>
+						</div>
+					</div>
+					<div class="Xaxis"></div>
+				</div>
+			</div>
+		</div>
+		<!-- lower part -->
+		<div class="lower">
+			<div class="left">
+				<div class="head">
+					<h4>Global Map</h4>
+					<span class="wide-view">View wide <img src="/images/weather/simboles/stars.png" /></span>
+				</div>
+				<div class="mapError"></div>
+				<div id="map">
+					<button class="zoom-location"><span class="material-icons">my_location</span></button>
+					<button class="layerSwitcher"><span class="material-icons">layers</span></button>
+				</div>
+			</div>
+			<div class="right">
+				<div class="head">
+					<h4>Other Large Cities</h4>
+					<a href="statistics.html">More Details<span>></span></a>
+				</div>
+				<div class="cities">
+					<div class="box">
+						<div class="text">
+							<span class="country"></span>
+							<span class="city-name"></span>
+							<span class="condition"></span>
+						</div>
+						<div class="info">
+							<img src="" alt="" class="weatherImage" data-code />
+							<div class="temp"><span class="value"></span><span class="unit"></span></div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="text">
+							<span class="country"></span>
+							<span class="city-name"></span>
+							<span class="condition"></span>
+						</div>
+						<div class="info">
+							<img src="" alt="" class="weatherImage" data-code />
+							<div class="temp"><span class="value"></span><span class="unit"></span></div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="text">
+							<span class="country"></span>
+							<span class="city-name"></span>
+							<span class="condition"></span>
+						</div>
+						<div class="info">
+							<img src="" alt="" class="weatherImage" data-code />
+							<div class="temp"><span class="value"></span><span class="unit"></span></div>
+						</div>
+					</div>
+					<div class="cities-loader">
+						<dotlottie-player src="https://lottie.host/eeaff001-5b30-405e-a81c-81372a74519f/YYKFGDs8WS.lottie" background="transparent" speed="1" style="width: 200px; height: 200px" loop autoplay></dotlottie-player>
+					</div>
+					<div class="error"><img src="/images/weather/white-mode/clear-or-hot.png" alt="" /><span>404</span></div>
+				</div>
+			</div>
+		</div>
+		<!-- tools -->
+		<div class="tools">
+			<div class="container">
+				<div class="nav">
+					<a class="menu active">
+						<span>Dashboard</span>
+						<i class="material-icons">home</i>
+					</a>
+					<a class="menu" href="statistics.html">
+						<span>Statistics</span>
+						<i class="material-icons">bar_chart</i>
+					</a>
+				</div>
+				<div class="settings">
+					<div class="title">
+						<h1>Options</h1>
+						<i class="material-icons">settings</i>
+					</div>
+					<div class="wind">
+						<span>Wind View</span>
+						<img src="/images/weather/simboles/dark-mode-wind.png" alt="" class="windChoice" />
+					</div>
+					<div class="forecast-type days">
+						<span>Forecast Type</span>
+						<div class="choices">
+							<img src="/images/weather/simboles/calendar.png" class="forecastTypeChoice active" />
+							<img src="/images/weather/simboles/clock.png" class="forecastTypeChoice" />
+						</div>
+					</div>
+
+					<div class="temp-unit C">
+						<span>Temperature Unit</span>
+						<div class="choices">
+							<span class="unit">F</span>
+							<span class="unit">C</span>
+						</div>
+					</div>
+					<div class="theme">
+						<span>Theme</span>
+						<div class="choices">
+							<i class="light material-icons" style="margin-left: -2px">wb_sunny</i>
+							<i class="dark material-icons active" style="margin-right: -3px">bedtime</i>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- CopyRight -->
+		<p class="CopyRight">&copy; 2024 Adam Loumame. All rights reserved.</p>
+		<!-- modules -->
+		<script type="module" src="src/search.js"></script>
+		<script type="module" src="src/modes.js"></script>
+		<script type="module" src="src/api.js"></script>
+		<script type="module" src="src/dashboard/midle.js"></script>
+		<script type="module" src="src/dashboard/lower.js"></script>
+		<script type="module" src="src/settings.js"></script>
+	</body>
+</html>
