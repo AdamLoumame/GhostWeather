@@ -980,7 +980,7 @@ header .right-part .ghost {
 }
 .wave {
 	position: absolute;
-	background-image: url("./images/weather/simboles/wave.png");
+	background-image: url("../images/weather/simboles/wave.png");
 	background-repeat: repeat-x;
 	background-position: 0 100%;
 	background-size: 1000px 120px;
@@ -994,7 +994,7 @@ header .right-part .ghost {
 }
 .wave1 {
 	position: absolute;
-	background-image: url("./images/weather/simboles/wave.png");
+	background-image: url("../images/weather/simboles/wave.png");
 	background-repeat: repeat-x;
 	background-position: 0 100%;
 	background-size: 1000px 120px;
@@ -1008,7 +1008,7 @@ header .right-part .ghost {
 }
 .wave2 {
 	position: absolute;
-	background-image: url("./images/weather/simboles/wave.png");
+	background-image: url("../images/weather/simboles/wave.png");
 	background-repeat: repeat-x;
 	background-position: 0 100%;
 	background-size: 1000px 120px;
