@@ -19,9 +19,9 @@ forecastOptions.forEach(option => {
 	})
 })
 
-import {getData} from "src/api.js"
-import {forecastWeatherConditions, uvColor} from "src/dicts.js"
-import {getUserCords, convert12form, getMonth, datetoName, toF, getFillColor, filterImage, getTime, updateTimelineImages, bottomTooltip, Xcrosshair, hideLoader} from "src/utilities.js"
+import {getData} from "./src/api.js"
+import {forecastWeatherConditions, uvColor} from "./src/dicts.js"
+import {getUserCords, convert12form, getMonth, datetoName, toF, getFillColor, filterImage, getTime, updateTimelineImages, bottomTooltip, Xcrosshair, hideLoader} from "./src/utilities.js"
 
 // default data
 let defaultPlace = await getUserCords()

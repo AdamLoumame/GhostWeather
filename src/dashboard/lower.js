@@ -1,7 +1,7 @@
-import {getSimpleDataByCords, getSimpleDataByName} from "src/api.js"
-import {mainWeatherConditions, biggestCities} from "src/dicts.js"
-import {bigUpdate} from "src/search.js"
-import {getUserCords, filterImage, toggleCitiesLoader, toggleCitiesError} from "src/utilities.js"
+import {getSimpleDataByCords, getSimpleDataByName} from "./src/api.js"
+import {mainWeatherConditions, biggestCities} from "./src/dicts.js"
+import {bigUpdate} from "./src/search.js"
+import {getUserCords, filterImage, toggleCitiesLoader, toggleCitiesError} from "./src/utilities.js"
 
 // default
 let defaultPlace = await getUserCords()

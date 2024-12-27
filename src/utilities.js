@@ -1,4 +1,4 @@
-import {nightImages, tempRanges} from "src/dicts.js"
+import {nightImages, tempRanges} from "./src/dicts.js"
 export function getUserCords() {
 	return new Promise((resolve, reject) => {
 		if (navigator.geolocation) {
