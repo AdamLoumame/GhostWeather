@@ -32,10 +32,10 @@ document.querySelectorAll(".date").forEach(date => {
 })
 
 // imports
-import {getUserCords, datetoName, getBoxData, airColor, getTime, convert12form, filterImage, getMonth, hideLoader} from "./src/utilities.js"
-import {mainWeatherConditions, aqiRanges, maxAirValues, forecastWeatherConditions, uvColor} from "./src/dicts.js"
-import {updateUnit} from "./src/settings.js"
-import {getData} from "./src/api.js" // main fetching function
+import {getUserCords, datetoName, getBoxData, airColor, getTime, convert12form, filterImage, getMonth, hideLoader} from "../utilities.js"
+import {mainWeatherConditions, aqiRanges, maxAirValues, forecastWeatherConditions, uvColor} from "../dicts.js"
+import {updateUnit} from "../settings.js"
+import {getData} from "../api.js" // main fetching function
 
 // default
 let defaultPlace = await getUserCords()

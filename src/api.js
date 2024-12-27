@@ -1,4 +1,4 @@
-import {hideError, hideLoader, showError, showLoader} from "./src/utilities.js"
+import {hideError, hideLoader, showError, showLoader} from "./utilities.js"
 export async function getData(place) {
 	try {
 		showLoader()

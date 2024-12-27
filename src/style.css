@@ -2046,8 +2046,8 @@ header .right-part .ghost {
 /* responsive */
 @media (max-width: 320px) {
 	.midle .left-part .main.week .day .weather-img {
-		right: 21% !important;
-		width: 3rem !important;
+		right: 26% !important;
+		width: 2.6rem !important;
 	}
 	.midle .left-part .main.week .day.active .bottom .right .weather-img {
 		width: 6.5rem !important;
@@ -2253,9 +2253,9 @@ header .right-part .ghost {
 		padding: 0.8rem;
 	}
 	.midle .left-part .main.week .day .weather-img {
-		right: 18%;
+		right: 23%;
 		left: inherit;
-		width: 3.5rem;
+		width: 3.4rem;
 	}
 	.midle .right-part .Chance-of-rain {
 		height: 15rem !important;
@@ -2490,7 +2490,7 @@ header .right-part .ghost {
 }
 @media (min-width: 1100px) {
 	html {
-		font-size: 14px;
+		font-size: 13.5px;
 	}
 }
 @media (min-width: 1250px) {

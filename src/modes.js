@@ -1,5 +1,5 @@
-import {UpdateSugg} from "./src/search.js"
-import {OnMain, OnStats} from "./src/utilities.js"
+import {UpdateSugg} from "./search.js"
+import {OnMain, OnStats} from "./utilities.js"
 // all the changes that occures while changing mode
 async function applyChanges() {
 	// searchBar update
@@ -7,7 +7,7 @@ async function applyChanges() {
 
 	// Main changes
 	if (OnMain()) {
-		let [{makeActive, resetBoxes, showRainGraph, UpdateBoxImage, updateImagePack}, {UpdateLower, updateMarkersImages}] = await Promise.all([import("./src/dashboard/midle.js"), import("./src/dashboard/lower.js")])
+		let [{makeActive, resetBoxes, showRainGraph, UpdateBoxImage, updateImagePack}, {UpdateLower, updateMarkersImages}] = await Promise.all([import("./dashboard/midle.js"), import("./dashboard/lower.js")])
 		// midle
 		updateImagePack()
 		// day / tomorrow changes
@@ -25,7 +25,7 @@ async function applyChanges() {
 		updateMarkersImages()
 	}
 	if (OnStats()) {
-		let {DisplayCharts} = await import("./src/statistics/Charts.js")
+		let {DisplayCharts} = await import("./statistics/Charts.js")
 		DisplayCharts()
 	}
 }
