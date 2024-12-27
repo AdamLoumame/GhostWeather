@@ -119,7 +119,7 @@ async function displayMapWeather() {
 function Styling(code, is_day) {
 	return new ol.style.Style({
 		image: new ol.style.Icon({
-			src: [800, 1000].includes(code) && !is_day ? "/images/weather/simboles/moon.png" : [800, 1000].includes(code) && is_day ? "/images/weather/simboles/small-sun.png" : filterImage(code, is_day, mainWeatherConditions),
+			src: [800, 1000].includes(code) && !is_day ? "images/weather/simboles/moon.png" : [800, 1000].includes(code) && is_day ? "images/weather/simboles/small-sun.png" : filterImage(code, is_day, mainWeatherConditions),
 			scale: 0.3
 		})
 	})
@@ -196,7 +196,7 @@ function displayCity(cityData, i) {
 	box.dataset.weather = [cityData.current.temp_c, cityData.current.condition.code, cityData.current.is_day]
 	box.dataset.wind = [cityData.current.wind_degree, cityData.current.wind_kph]
 }
-let windImage = "/images/weather/simboles/arrow.png"
+let windImage = "images/weather/simboles/arrow.png"
 export async function displayRandCities() {
 	chosedCities = []
 	toggleCitiesLoader(true)

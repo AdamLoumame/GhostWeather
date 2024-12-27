@@ -69,40 +69,40 @@ export async function UpdateMidle(value = "") {
 	hideLoader()
 }
 let weatherType = document.querySelector(".tools .container .settings .wind").classList[1] ? "wind" : "normal" // normal or wind
-let windImage = "/images/weather/simboles/arrow.png"
+let windImage = "images/weather/simboles/arrow.png"
 ////////////////         Today + Tommorow          ///////////////
 function showDay(box, data, data2 = data) {
 	let isDay = data.is_day != undefined ? data.is_day : 1
 	box.innerHTML = `
 					<div class="day-bg">
-						<img src="/images/weather/simboles/sun.png" class="sun">
+						<img src="images/weather/simboles/sun.png" class="sun">
 						<div class="wave"></div>
 						<div class="wave1"></div>
 						<div class="wave2"></div>
 					</div>
 					<div class="night-bg">
-						<img src="/images/weather/simboles/moon-2.png" alt="" class="moon">
+						<img src="images/weather/simboles/moon-2.png" alt="" class="moon">
 					</div>
 					<div class="left">
 						<div class="main-value">${Math.round(data.temp_c ? data.temp_c : data.avgtemp_c)} °C</div>
 						<div class="infos">
 							<div class="box humidity">
-								<img src="/images/weather/simboles/wind-2.png" alt="" class="icon">
+								<img src="images/weather/simboles/wind-2.png" alt="" class="icon">
 								<span class="value">${Math.round(data.humidity ? data.humidity : data.avghumidity)} %</span>
 								<span class="text">Humidity</span>
 							</div>
 							<div class="box vis">
-								<img src="${data.is_day === undefined ? "/images/weather/simboles/vis2.png" : "/images/weather/simboles/vis.png"}" alt="" class="icon">
+								<img src="${data.is_day === undefined ? "images/weather/simboles/vis2.png" : "images/weather/simboles/vis.png"}" alt="" class="icon">
 								<span class="value">${Math.round(data.vis_km ? data.vis_km : data.avgvis_km)} Km/h</span>
 								<span class="text">Visibility</span>
 							</div>
 							<div class="box uv">
-								<img src="/images/weather/simboles/uv.png" alt="" class="icon">
+								<img src="images/weather/simboles/uv.png" alt="" class="icon">
 								<span class="value">${Math.round(data.uv)}</span>
 								<span class="text">Ultraviolet</span>
 							</div>
 							<div class="box wind">
-								<img src="/images/weather/simboles/wind.png" alt="" class="icon">
+								<img src="images/weather/simboles/wind.png" alt="" class="icon">
 								<span class="value">${Math.round(data.wind_kph ? data.wind_kph : data.maxwind_kph)} Km/h</span>
 								<span class="text">Wind Speed</span>
 							</div>
@@ -150,7 +150,7 @@ function showDay(box, data, data2 = data) {
 	// creating and placing stars randomly
 	for (let i = 0; i < 3; i++) {
 		let star = document.createElement("img")
-		star.src = "/images/weather/simboles/star.png"
+		star.src = "images/weather/simboles/star.png"
 		star.classList.add("star")
 		document.querySelector(".night-bg").appendChild(star)
 	}

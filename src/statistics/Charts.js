@@ -78,7 +78,7 @@ export function displayMainChart() {
 		;[min, max] = [minimum - 2 * step, maximum + 2 * step]
 	}
 
-	let windImage = "/images/weather/simboles/arrow.png"
+	let windImage = "images/weather/simboles/arrow.png"
 	let chartColor = getFillColor(weatherType, (maximum + minimum) / 2)
 	let options = {
 		series: [{data: forecastData.map((el, i) => (valueName === "wind_spd" ? el[valueName] * 3.6 : el[valueName]))}],

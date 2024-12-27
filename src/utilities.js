@@ -92,10 +92,10 @@ export function toggleStats(display) {
 }
 export let getFillColor = (wt, value = 0) => (wt === "temp" ? tempRanges.find(range => value >= range.threshold).color : wt === "wind" ? "#06d6a0" : "#4cc9f0")
 export function updateTimelineImages(mode) {
-	document.querySelector(".day-timeline .set .sunstate").src = mode === "dark" ? "/images/weather/simboles/dark-sunset.png" : "/images/weather/simboles/light-sunset.png"
-	document.querySelector(".day-timeline .rise .sunstate").src = mode === "dark" ? "/images/weather/simboles/dark-sunrise.png" : "/images/weather/simboles/light-sunrise.png"
-	document.querySelector(".day-timeline .set .moonstate").src = mode === "dark" ? "/images/weather/simboles/dark-moonset.png" : "/images/weather/simboles/light-moonset.png"
-	document.querySelector(".day-timeline .rise .moonstate").src = mode === "dark" ? "/images/weather/simboles/dark-moonrise.png" : "/images/weather/simboles/light-moonrise.png"
+	document.querySelector(".day-timeline .set .sunstate").src = mode === "dark" ? "images/weather/simboles/dark-sunset.png" : "images/weather/simboles/light-sunset.png"
+	document.querySelector(".day-timeline .rise .sunstate").src = mode === "dark" ? "images/weather/simboles/dark-sunrise.png" : "images/weather/simboles/light-sunrise.png"
+	document.querySelector(".day-timeline .set .moonstate").src = mode === "dark" ? "images/weather/simboles/dark-moonset.png" : "images/weather/simboles/light-moonset.png"
+	document.querySelector(".day-timeline .rise .moonstate").src = mode === "dark" ? "images/weather/simboles/dark-moonrise.png" : "images/weather/simboles/light-moonrise.png"
 }
 export let bottomTooltip = (date, value, padding) => `<div class="bottom-toultip">${date}<span class="value" style="padding-left:${padding}rem;">${value}</span></div>`
 export let Xcrosshair = (mode, proMode) => {
