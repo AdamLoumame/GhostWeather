@@ -27,9 +27,10 @@ import {getUserCords, convert12form, getMonth, datetoName, toF, getFillColor, fi
 let defaultPlace = await getUserCords()
 let [data, weekData, hourData] = await getData(defaultPlace)
 
-let lastChart, lastUvChart, lastCloudsChart, lastHumChart
+let lastCharts = []
 
 export async function DisplayCharts(place) {
+	lastCharts.forEach(async chart =>await chart.destroy())
 	if (place) [data, weekData, hourData] = await getData(place)
 	mode = document.querySelector(".mode").classList[1]
 	weatherType = document.querySelector(".main-chart .weather-type-options").classList[1]
@@ -57,7 +58,6 @@ let states = {hover: {filter: {type: "none"}}, active: {filter: {type: "none"}}}
 
 export function displayMainChart() {
 	// reset last chart + info labels + empty chart label + day indecator
-	if (lastChart) lastChart.destroy()
 	document.querySelector(".main-chart .container .info-labels").innerHTML = ""
 	document.querySelector(".main-chart .container .empty-chart-label").style.display = "none"
 	document.querySelectorAll(".main-chart .container .day").forEach(day => day.parentElement.removeChild(day))
@@ -120,7 +120,7 @@ export function displayMainChart() {
 	let emptyChart = options.series[0].data.every(value => value === 0)
 	let chart = new ApexCharts(document.querySelector(".main-chart #chart"), options)
 	chart.render()
-	lastChart = chart // to deleat on creation of new one
+	lastCharts.push(chart)// to deleat on creation of new one
 
 	// placing infos ( chart essentials )
 	if (proMode && !emptyChart) {
@@ -183,7 +183,6 @@ export function displayMainChart() {
 
 function displayUvChart() {
 	// reset
-	if (lastUvChart) lastUvChart.destroy()
 	document.querySelector(".bar-chart .container .labels").innerHTML = ""
 	document.querySelector(".empty-uv-chart-label").innerHTML = ""
 	document.querySelectorAll(".stats-bottom .bar-chart .container .day").forEach(day => day.parentElement.removeChild(day))
@@ -229,7 +228,7 @@ function displayUvChart() {
 	}
 
 	let UvChart = new ApexCharts(document.querySelector(".stats-bottom .bar-chart #uv-chart"), options)
-	lastUvChart = UvChart
+	lastCharts.push(UvChart)// to deleat on creation of new one
 	UvChart.render()
 	let emptyChart = options.series[0].data.every(value => value.y === 0)
 
@@ -263,8 +262,6 @@ function displayUvChart() {
 // Atmospheric Overview
 function atmOverview() {
 	// reset
-	if (lastCloudsChart) lastCloudsChart.destroy()
-	if (lastHumChart) lastHumChart.destroy()
 	document.querySelector(".clouds-error").innerHTML = ""
 	document.querySelector(".stats-bottom .atmospheric-overview .humidity .labels").innerHTML = ""
 
@@ -287,7 +284,7 @@ function atmOverview() {
 	}
 	let cloudsChart = new ApexCharts(document.querySelector("#cloudsChart"), cloudsOptions)
 	cloudsChart.render()
-	lastCloudsChart = cloudsChart
+	lastCharts.push(cloudsChart)// to deleat on creation of new one
 	let emptyCloudsChart = cloudsOptions.series.every(value => value === 0)
 	if (emptyCloudsChart) document.querySelector(".clouds-error").innerHTML = `No clouds expected for the comming ${forecastType}`
 
@@ -329,7 +326,7 @@ function atmOverview() {
 		stroke: {curve: "smooth"}
 	}
 	let humChart = new ApexCharts(document.querySelector("#humChart"), humOptions)
-	lastHumChart = humChart
+	lastCharts.push(humChart)// to deleat on creation of new one
 	humChart.render()
 
 	if (proMode) {
