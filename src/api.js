@@ -6,8 +6,8 @@ export async function getData(place) {
 		const mainResult = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=0bb3890e2cdc4fbabd5164832240711&q=${place}&days=7&aqi=yes`)
 		if (mainResult.ok) {
 			let mainData = await mainResult.json()
-			const forecastResult = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${mainData.location.lat}&lon=${mainData.location.lon}&key=6013475cf60c4aed9f68b81e49eadcda`)
-			const hoursForecastResult = await fetch(`https://api.weatherbit.io/v2.0/forecast/hourly?lat=${mainData.location.lat}&lon=${mainData.location.lon}&key=6013475cf60c4aed9f68b81e49eadcda`)
+			const forecastResult = await fetch(`https://api.weatherbit.io/v2.0/forecast/daily?lat=${mainData.location.lat}&lon=${mainData.location.lon}&key=6a4d4353f36f495b8b6e61417d7a5dbb`)
+			const hoursForecastResult = await fetch(`https://api.weatherbit.io/v2.0/forecast/hourly?lat=${mainData.location.lat}&lon=${mainData.location.lon}&key=6a4d4353f36f495b8b6e61417d7a5dbb`)
 			if (forecastResult.ok && hoursForecastResult.ok) {
 				hideError()
 				let forecastData = await forecastResult.json()
